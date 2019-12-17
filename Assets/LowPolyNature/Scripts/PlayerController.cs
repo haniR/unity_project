@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -45,8 +46,12 @@ public class PlayerController : MonoBehaviour
     #endregion
     public AudioClip healthClip; 
     public AudioClip unhealthClip;
+    public AudioClip gameOverClip;
     public AudioSource healthSource; 
-    public AudioSource unhealthSource; 
+    public AudioSource unhealthSource;
+    public AudioSource gameOverSource;
+    public GameObject losePanel;
+    public GameObject winPanel;
 
 
     bool speedflage; 
@@ -60,8 +65,12 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        losePanel.gameObject.SetActive(false);
+        winPanel.gameObject.SetActive(false);
+
         healthSource.clip = healthClip;
         unhealthSource.clip = unhealthClip;
+        gameOverSource.clip = gameOverClip;
         Speed = 5.0f;
         RotationSpeed = 90f;
         JumpSpeed = 9.0f;
@@ -497,6 +506,25 @@ public class PlayerController : MonoBehaviour
             unhealthSource.Play();
 
         }
+        if (other.gameObject.CompareTag("final") && time>0)
+        {
+            // win and go to next scene
+            winPanel.gameObject.SetActive(true);
+
+        }
+        if ( time <= 0)
+        {
+            // win and go to next scene
+            losePanel.gameObject.SetActive(true);
+            gameOverSource.Play();
+            //  Restart();
+            
+
+        }
+    }
+    void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void setText()

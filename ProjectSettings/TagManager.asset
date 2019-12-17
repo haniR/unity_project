@@ -3,9 +3,30 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: [healthy food, unhealthy food, apple, banana, pepper, pineapple, sweetpepper,
-    burger, pizza, hotdog, donut, pepper, pineapple, banana, apple, healthy food,
-    hotdog, pizza, fries, burger, unhealthy food, donut]
+  tags:
+  - healthy food
+  - unhealthy food
+  - apple
+  - banana
+  - pepper
+  - pineapple
+  - sweetpepper
+  - burger
+  - pizza
+  - hotdog
+  - donut
+  - pepper
+  - pineapple
+  - banana
+  - apple
+  - healthy food
+  - hotdog
+  - pizza
+  - fries
+  - burger
+  - unhealthy food
+  - donut
+  - final
   layers:
   - Default
   - TransparentFX

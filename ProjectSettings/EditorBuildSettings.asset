@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/LowPolyNature/Scenes/Demo.unity
-    guid: 098a34d9c68692342943067d2876f441
+    path: Assets/Scenes/Welcome Scene.unity
+    guid: c7f627ead753e584681703a7137169bc
   - enabled: 1
-    path: Assets/LowPolyNature/Scenes/Simple.unity
-    guid: 55a0b71e85d58e34ea55f5f65a929097
+    path: Assets/Scenes/level1.unity
+    guid: 45e22f70c24adf743a1c0155a291b009
+  - enabled: 1
+    path: Assets/Scenes/Level 2.unity
+    guid: 12c144ef1f3e8bc44b5fdb178f484a4e
   m_configObjects: {}
