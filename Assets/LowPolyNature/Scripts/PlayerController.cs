@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
@@ -29,9 +30,9 @@ public class PlayerController : MonoBehaviour
 
     #region Public Members
 
-    public float Speed = 5.0f;
+    public float Speed ;
 
-    public float RotationSpeed = 240.0f;
+    public float RotationSpeed ;
 
     public Inventory Inventory;
 
@@ -39,13 +40,40 @@ public class PlayerController : MonoBehaviour
 
     public HUD Hud;
 
-    public float JumpSpeed = 7.0f;
+    public float JumpSpeed;
 
     #endregion
+    public AudioClip healthClip; 
+    public AudioClip unhealthClip;
+    public AudioSource healthSource; 
+    public AudioSource unhealthSource; 
 
+
+    bool speedflage; 
+    bool jumpflage; 
+    float speedTime ;
+    float jumbTime;
+    float slowTime ; 
+    float notJumbTime; 
+    public Text timeText;
+    float time;
     // Use this for initialization
     void Start()
     {
+        healthSource.clip = healthClip;
+        unhealthSource.clip = unhealthClip;
+        Speed = 5.0f;
+        RotationSpeed = 90f;
+        JumpSpeed = 9.0f;
+        speedflage = false;
+             jumpflage = false; 
+
+        time = 15;
+        speedTime = 0;
+        jumbTime = 0;
+        slowTime = 0;
+        notJumbTime = 0;
+        setText();
         _animator = GetComponent<Animator>();
         _characterController = GetComponent<CharacterController>();
         Inventory.ItemUsed += Inventory_ItemUsed;
@@ -264,6 +292,52 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (time >= 0)
+        {
+            time -= 0.01f;
+            setText();
+        }
+       
+        if (speedTime > 0)
+        {
+            speedTime -= 0.01f;
+            Debug.Log(speedTime);
+        }
+        else
+        {
+            Speed = 5f;
+        }
+        if (jumbTime > 0)
+        {
+           jumbTime -= 0.01f;
+            Debug.Log("jumpTime "+JumpSpeed);
+        }
+        else
+        {
+            JumpSpeed = 9.0f;
+        }
+        if (notJumbTime > 0)
+        {
+            notJumbTime -= 0.01f;
+            jumpflage = true; 
+        }
+       if(notJumbTime < 0 && jumpflage ==true)
+        {
+          JumpSpeed = 9.0f;
+            jumpflage = false;
+        }
+        if (slowTime > 0)
+        {
+            slowTime -= 0.001f;
+            speedflage = true; 
+        }
+        if (slowTime < 0 && speedflage == true)
+        {
+                Speed = 5f;
+            speedflage = false; 
+        }
+
         if (!IsDead && mIsControlEnabled)
         {
             // Interact with the item
@@ -355,27 +429,82 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        InteractableItemBase item = other.GetComponent<InteractableItemBase>();
-
-        if (item != null)
+       
+        if (other.gameObject.CompareTag("healthy food"))
         {
-            if (item.CanInteract(other))
-            {
+            time = time + 5f;
+            other.gameObject.SetActive(false);
+            setText();
+            healthSource.Play();
+        }
+        if (other.gameObject.CompareTag("unhealthy food"))
+        {
+            time = time - 5f;
+            other.gameObject.SetActive(false);
+            setText();
+            unhealthSource.Play();
+        }
+        if (other.gameObject.CompareTag("banana"))
+        {
+            other.gameObject.SetActive(false);
+            jumbTime =  3f;
+            JumpSpeed = 14f; 
+            setText();
+            healthSource.Play();
 
-                mInteractItem = item;
+        }
+        if (other.gameObject.CompareTag("hotdog"))
+        {
+            other.gameObject.SetActive(false);
+            notJumbTime =  3f;
+            JumpSpeed = 2f; 
+            setText();
+            unhealthSource.Play();
 
-                Hud.OpenMessagePanel(mInteractItem);
-            }
+        }
+
+        if (other.gameObject.CompareTag("pepper"))
+        {
+            other.gameObject.SetActive(false);
+            speedTime =  3f;
+            Speed = 10f; 
+            setText();
+            healthSource.Play();
+
+        }
+        if (other.gameObject.CompareTag("pizza"))
+        {
+            other.gameObject.SetActive(false);
+            slowTime =  4f;
+            Speed = 2f; 
+            setText();
+            unhealthSource.Play();
+
+        }
+        if (other.gameObject.CompareTag("pineapple"))
+        {
+            time = time + 10f;
+            other.gameObject.SetActive(false);
+            setText();
+            healthSource.Play();
+
+        }
+        if (other.gameObject.CompareTag("burger"))
+        {
+            time = time - 10f;
+            other.gameObject.SetActive(false);
+            setText();
+            unhealthSource.Play();
+
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    void setText()
     {
-        InteractableItemBase item = other.GetComponent<InteractableItemBase>();
-        if (item != null)
-        {
-            Hud.CloseMessagePanel();
-            mInteractItem = null;
-        }
+        timeText.text = "Time : " + time;
+    }
+    private void OnTriggerEnter(Collision collision)
+    {
+      
     }
 }
