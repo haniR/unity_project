@@ -43,6 +43,12 @@ public class PlayerController : MonoBehaviour
     public float JumpSpeed;
 
     #endregion
+    public AudioClip healthClip; 
+    public AudioClip unhealthClip;
+    public AudioSource healthSource; 
+    public AudioSource unhealthSource; 
+
+
     bool speedflage; 
     bool jumpflage; 
     float speedTime ;
@@ -54,6 +60,8 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        healthSource.clip = healthClip;
+        unhealthSource.clip = unhealthClip;
         Speed = 5.0f;
         RotationSpeed = 90f;
         JumpSpeed = 9.0f;
@@ -427,12 +435,14 @@ public class PlayerController : MonoBehaviour
             time = time + 5f;
             other.gameObject.SetActive(false);
             setText();
+            healthSource.Play();
         }
         if (other.gameObject.CompareTag("unhealthy food"))
         {
             time = time - 5f;
             other.gameObject.SetActive(false);
             setText();
+            unhealthSource.Play();
         }
         if (other.gameObject.CompareTag("banana"))
         {
@@ -440,38 +450,52 @@ public class PlayerController : MonoBehaviour
             jumbTime =  3f;
             JumpSpeed = 14f; 
             setText();
-        } 
+            healthSource.Play();
+
+        }
         if (other.gameObject.CompareTag("hotdog"))
         {
             other.gameObject.SetActive(false);
             notJumbTime =  3f;
             JumpSpeed = 2f; 
             setText();
+            unhealthSource.Play();
+
         }
-        
+
         if (other.gameObject.CompareTag("pepper"))
         {
             other.gameObject.SetActive(false);
             speedTime =  3f;
             Speed = 10f; 
             setText();
-        } 
+            healthSource.Play();
+
+        }
         if (other.gameObject.CompareTag("pizza"))
         {
             other.gameObject.SetActive(false);
             slowTime =  4f;
             Speed = 2f; 
             setText();
-        }  if (other.gameObject.CompareTag("pineapple"))
+            unhealthSource.Play();
+
+        }
+        if (other.gameObject.CompareTag("pineapple"))
         {
             time = time + 10f;
             other.gameObject.SetActive(false);
             setText();
-        }  if (other.gameObject.CompareTag("burger"))
+            healthSource.Play();
+
+        }
+        if (other.gameObject.CompareTag("burger"))
         {
             time = time - 10f;
             other.gameObject.SetActive(false);
             setText();
+            unhealthSource.Play();
+
         }
     }
 
