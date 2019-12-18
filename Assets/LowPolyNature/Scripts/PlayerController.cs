@@ -518,6 +518,7 @@ public class PlayerController : MonoBehaviour
         {
             // win and go to next scene
             winPanel.gameObject.SetActive(true);
+            gameAudio.Stop();
             gameWinSource.Play();
 
         }
