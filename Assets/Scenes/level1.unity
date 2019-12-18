@@ -4515,6 +4515,11 @@ PrefabInstance:
       propertyPath: gameOverClip
       value: 
       objectReference: {fileID: 8300000, guid: 5ca1b70cade56494490bd2b4abcd0671, type: 3}
+    - target: {fileID: 114776834927309406, guid: fbc08fd83daf78c4483cae67db92c0e7,
+        type: 3}
+      propertyPath: winPanel
+      value: 
+      objectReference: {fileID: 1087300742}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbc08fd83daf78c4483cae67db92c0e7, type: 3}
 --- !u!4 &702594913 stripped
@@ -7073,6 +7078,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: 30, z: 0}
+--- !u!1 &1087300742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2890863154137067741, guid: a93c88cbc549fcc4e80b61dc1eda875d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1874522972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1092593941
 PrefabInstance:
   m_ObjectHideFlags: 0

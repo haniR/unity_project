@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
     float notJumbTime; 
     public Text timeText;
     float time;
+    float time2;
     // Use this for initialization
     void Start()
     {
@@ -81,6 +82,7 @@ public class PlayerController : MonoBehaviour
         speedTime = 0;
         jumbTime = 0;
         slowTime = 0;
+        time2 = 0;
         notJumbTime = 0;
         setText();
         _animator = GetComponent<Animator>();
@@ -301,8 +303,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time2++;
 
-        if (time >= 0)
+        if (time > 0)
         {
             time -= 0.01f;
             setText();
@@ -512,7 +515,7 @@ public class PlayerController : MonoBehaviour
             winPanel.gameObject.SetActive(true);
 
         }
-        if ( time <= 0)
+        if ( time < 0 && time2>3)
         {
             // win and go to next scene
             losePanel.gameObject.SetActive(true);
