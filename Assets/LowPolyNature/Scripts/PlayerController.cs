@@ -46,10 +46,12 @@ public class PlayerController : MonoBehaviour
     #endregion
     public AudioClip healthClip; 
     public AudioClip unhealthClip;
-    public AudioClip gameOverClip;
+    //public AudioClip gameOverClip;
+   // public AudioClip gameWinClip;
     public AudioSource healthSource; 
     public AudioSource unhealthSource;
     public AudioSource gameOverSource;
+    public AudioSource gameWinSource;
     public GameObject losePanel;
     public GameObject winPanel;
 
@@ -71,7 +73,8 @@ public class PlayerController : MonoBehaviour
 
         healthSource.clip = healthClip;
         unhealthSource.clip = unhealthClip;
-        gameOverSource.clip = gameOverClip;
+        //  gameOverSource.clip = gameOverClip;
+        //gameWinSource.clip = gameWinClip;
         Speed = 5.0f;
         RotationSpeed = 90f;
         JumpSpeed = 9.0f;
@@ -513,13 +516,16 @@ public class PlayerController : MonoBehaviour
         {
             // win and go to next scene
             winPanel.gameObject.SetActive(true);
+            gameWinSource.Play();
 
         }
-        if ( time < 0 && time2>3)
+        if ( time <= 0 )
         {
             // win and go to next scene
+            Speed = 0;
             losePanel.gameObject.SetActive(true);
             gameOverSource.Play();
+            
             //  Restart();
             
 
