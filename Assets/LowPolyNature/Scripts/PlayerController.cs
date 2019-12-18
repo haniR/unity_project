@@ -525,9 +525,10 @@ public class PlayerController : MonoBehaviour
             Speed = 0;
             losePanel.gameObject.SetActive(true);
             gameOverSource.Play();
-            
+            _characterController.enabled = false;
+
             //  Restart();
-            
+
 
         }
     }
