@@ -54,8 +54,8 @@ public class PlayerController : MonoBehaviour
     public AudioSource gameWinSource;
     public GameObject losePanel;
     public GameObject winPanel;
-
-
+    public AudioSource gameAudio  ;
+    bool outing; 
     bool speedflage; 
     bool jumpflage; 
     float speedTime ;
@@ -68,6 +68,8 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        outing = false; 
+        gameAudio.Play();
         losePanel.gameObject.SetActive(false);
         winPanel.gameObject.SetActive(false);
 
@@ -344,7 +346,7 @@ public class PlayerController : MonoBehaviour
         }
         if (slowTime > 0)
         {
-            slowTime -= 0.001f;
+            slowTime -= 0.01f;
             speedflage = true; 
         }
         if (slowTime < 0 && speedflage == true)
@@ -519,11 +521,17 @@ public class PlayerController : MonoBehaviour
             gameWinSource.Play();
 
         }
-        if ( time <= 0 )
+        if (other.gameObject.CompareTag("out"))
+        {
+            outing = true; 
+        }
+
+        if ( time <= 0  || outing == true)
         {
             // win and go to next scene
             Speed = 0;
             losePanel.gameObject.SetActive(true);
+            gameAudio.Stop();  
             gameOverSource.Play();
             _characterController.enabled = false;
 
@@ -531,6 +539,7 @@ public class PlayerController : MonoBehaviour
 
 
         }
+
     }
     void Restart()
     {

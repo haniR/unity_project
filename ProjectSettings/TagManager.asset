@@ -27,6 +27,7 @@ TagManager:
   - unhealthy food
   - donut
   - final
+  - out
   layers:
   - Default
   - TransparentFX
