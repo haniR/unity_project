@@ -529,6 +529,9 @@ public class PlayerController : MonoBehaviour
 
         if ( time <= 0  || outing == true)
         {
+            time = 0;
+            setText();
+            
             // win and go to next scene
             Speed = 0;
             losePanel.gameObject.SetActive(true);
