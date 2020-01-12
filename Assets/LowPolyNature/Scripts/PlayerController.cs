@@ -321,19 +321,17 @@ public class PlayerController : MonoBehaviour
             speedTime -= 0.01f;
             Debug.Log(speedTime);
         }
-        else
-        {
-            Speed = 5f;
-        }
+        
+        //else
+        //{
+          //  Speed = 5f;
+        //}
         if (jumbTime > 0)
         {
            jumbTime -= 0.01f;
             Debug.Log("jumpTime "+JumpSpeed);
         }
-        else
-        {
-            JumpSpeed = 9.0f;
-        }
+      
         if (notJumbTime > 0)
         {
             notJumbTime -= 0.01f;
@@ -344,15 +342,23 @@ public class PlayerController : MonoBehaviour
           JumpSpeed = 9.0f;
             jumpflage = false;
         }
+        if(jumbTime < 0 && jumpflage ==false)
+        {
+          JumpSpeed = 9.0f;
+        }
         if (slowTime > 0)
         {
             slowTime -= 0.01f;
-            speedflage = true; 
+            speedflage = true;
+            Debug.Log(slowTime+"this: " + Speed);
         }
         if (slowTime < 0 && speedflage == true)
         {
                 Speed = 5f;
             speedflage = false; 
+        } if (speedTime < 0 && speedflage == false)
+        {
+                Speed = 5f;
         }
 
         if (!IsDead && mIsControlEnabled)
