@@ -1525,6 +1525,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
@@ -4752,6 +4754,34 @@ PrefabInstance:
       propertyPath: gameAudio
       value: 
       objectReference: {fileID: 2126874684}
+    - target: {fileID: 1580184405953046, guid: fbc08fd83daf78c4483cae67db92c0e7, type: 3}
+      propertyPath: m_TagString
+      value: chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013233005478534, guid: fbc08fd83daf78c4483cae67db92c0e7, type: 3}
+      propertyPath: m_TagString
+      value: chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 1817265870680578, guid: fbc08fd83daf78c4483cae67db92c0e7, type: 3}
+      propertyPath: m_TagString
+      value: chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 1723810168828476, guid: fbc08fd83daf78c4483cae67db92c0e7, type: 3}
+      propertyPath: m_TagString
+      value: chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276067219155420, guid: fbc08fd83daf78c4483cae67db92c0e7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420406359235064, guid: fbc08fd83daf78c4483cae67db92c0e7, type: 3}
+      propertyPath: m_TagString
+      value: chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 1923541505225708, guid: fbc08fd83daf78c4483cae67db92c0e7, type: 3}
+      propertyPath: m_TagString
+      value: chest
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbc08fd83daf78c4483cae67db92c0e7, type: 3}
 --- !u!4 &702594913 stripped
@@ -9138,6 +9168,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &1404725729 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000011216760202, guid: 78a6a596f3cdc2641b44bb3d371c8db0,

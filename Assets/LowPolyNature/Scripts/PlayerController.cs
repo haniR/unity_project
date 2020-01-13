@@ -65,9 +65,11 @@ public class PlayerController : MonoBehaviour
     public Text timeText;
     float time;
     float time2;
+    GameObject[] chest;
     // Use this for initialization
     void Start()
     {
+        chest = GameObject.FindGameObjectsWithTag("chest");
         outing = false; 
         gameAudio.Play();
         losePanel.gameObject.SetActive(false);
@@ -465,6 +467,10 @@ public class PlayerController : MonoBehaviour
             time = time - 5f;
             other.gameObject.SetActive(false);
             setText();
+            foreach (GameObject chesst in chest)
+            {
+                chesst.gameObject.transform.localScale += new Vector3(.2f, .2f, .2f);
+            }
             unhealthSource.Play();
         }
         if (other.gameObject.CompareTag("banana"))
@@ -480,7 +486,11 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             notJumbTime =  3f;
-            JumpSpeed = 2f; 
+            JumpSpeed = 2f;
+            foreach (GameObject chesst in chest)
+            {
+                chesst.gameObject.transform.localScale += new Vector3(.4f, .4f, .4f);
+            }
             setText();
             unhealthSource.Play();
 
@@ -499,7 +509,11 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             slowTime =  4f;
-            Speed = 2f; 
+            Speed = 2f;
+            foreach (GameObject chesst in chest)
+            {
+                chesst.gameObject.transform.localScale += new Vector3(.5f, .5f, .5f);
+            }
             setText();
             unhealthSource.Play();
 
@@ -508,6 +522,10 @@ public class PlayerController : MonoBehaviour
         {
             time = time + 10f;
             other.gameObject.SetActive(false);
+            foreach (GameObject chesst in chest)
+            {
+                chesst.gameObject.transform.localScale -= new Vector3(.5f, .5f, .5f);
+            }
             setText();
             healthSource.Play();
 
@@ -516,6 +534,11 @@ public class PlayerController : MonoBehaviour
         {
             time = time - 10f;
             other.gameObject.SetActive(false);
+            foreach (GameObject chesst in chest)
+            {
+                chesst.gameObject.transform.localScale += new Vector3(.5f, .5f, .5f);
+            }
+            
             setText();
             unhealthSource.Play();
 

@@ -28,6 +28,7 @@ TagManager:
   - donut
   - final
   - out
+  - chest
   layers:
   - Default
   - TransparentFX
