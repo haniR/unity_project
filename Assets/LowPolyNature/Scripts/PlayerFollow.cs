@@ -9,7 +9,7 @@ public class PlayerFollow : MonoBehaviour
     private Vector3 _cameraOffset;
 
     [Range(0.01f, 1.0f)]
-    public float SmoothFactor = 0.5f;
+    public float SmoothFactor = 0.2f;
 
     public bool LookAtPlayer = false;
 
@@ -19,9 +19,9 @@ public class PlayerFollow : MonoBehaviour
 
     public float RotationsSpeed = 5.0f;
 
-    public float CameraPitchMin = 1.5f;
+    public float CameraPitchMin = 1.2f;
 
-    public float CameraPitchMax = 6.5f;
+    public float CameraPitchMax = 6.2f;
 
     // Use this for initialization
     void Start()

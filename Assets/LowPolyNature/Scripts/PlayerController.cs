@@ -205,7 +205,7 @@ public class PlayerController : MonoBehaviour
     public int Food = 100;
 
     [Tooltip("Rate in seconds in which the hunger increases")]
-    public float HungerRate = 0.5f;
+    public float HungerRate = 0.2f;
 
     public void IncreaseHunger()
     {
@@ -457,9 +457,22 @@ public class PlayerController : MonoBehaviour
        
         if (other.gameObject.CompareTag("healthy food"))
         {
+
             time = time + 5f;
             other.gameObject.SetActive(false);
             setText();
+            foreach (GameObject chesst in chest)
+            {
+
+                if (chesst.gameObject.transform.localScale != new Vector3(0.6f, 0.6f, 0.6f))
+                {
+//                    Debug.Log(chesst.gameObject.transform.localScale);
+
+                    chesst.gameObject.transform.localScale -= new Vector3(.2f, .2f, .2f);
+                    Debug.Log(chesst.gameObject.transform.localScale);
+
+                }
+            }
             healthSource.Play();
         }
         if (other.gameObject.CompareTag("unhealthy food"))
@@ -469,7 +482,11 @@ public class PlayerController : MonoBehaviour
             setText();
             foreach (GameObject chesst in chest)
             {
-                chesst.gameObject.transform.localScale += new Vector3(.2f, .2f, .2f);
+                if (chesst.gameObject.transform.localScale != new Vector3(1.4f, 1.4f, 1.4f))
+                {
+                    Debug.Log(chesst.gameObject.transform.localScale);
+                    chesst.gameObject.transform.localScale += new Vector3(.2f, .2f, .2f);
+                }
             }
             unhealthSource.Play();
         }
@@ -477,7 +494,14 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             jumbTime =  3f;
-            JumpSpeed = 14f; 
+            JumpSpeed = 14f;
+            foreach (GameObject chesst in chest)
+            {
+                if (chesst.gameObject.transform.localScale != new Vector3(0.6f, 0.6f, 0.6f))
+                {
+                    chesst.gameObject.transform.localScale -= new Vector3(.2f, .2f, .2f);
+                }
+            }
             setText();
             healthSource.Play();
 
@@ -489,7 +513,10 @@ public class PlayerController : MonoBehaviour
             JumpSpeed = 2f;
             foreach (GameObject chesst in chest)
             {
-                chesst.gameObject.transform.localScale += new Vector3(.4f, .4f, .4f);
+                if (chesst.gameObject.transform.localScale != new Vector3(1.4f, 1.4f, 1.4f))
+                {
+                    chesst.gameObject.transform.localScale += new Vector3(.4f, .4f, .4f);
+                }
             }
             setText();
             unhealthSource.Play();
@@ -499,9 +526,17 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("pepper"))
         {
             other.gameObject.SetActive(false);
+
             speedTime =  3f;
             Speed = 10f; 
             setText();
+            foreach (GameObject chesst in chest)
+            {
+                if (chesst.gameObject.transform.localScale != new Vector3(0.6f, 0.6f, 0.6f))
+                {
+                    chesst.gameObject.transform.localScale -= new Vector3(.2f, .2f, .2f);
+                }
+            }
             healthSource.Play();
 
         }
@@ -512,7 +547,10 @@ public class PlayerController : MonoBehaviour
             Speed = 2f;
             foreach (GameObject chesst in chest)
             {
-                chesst.gameObject.transform.localScale += new Vector3(.5f, .5f, .5f);
+                if (chesst.gameObject.transform.localScale != new Vector3(1.4f, 1.4f, 1.4f))
+                {
+                    chesst.gameObject.transform.localScale += new Vector3(.2f, .2f, .2f);
+                }
             }
             setText();
             unhealthSource.Play();
@@ -524,7 +562,10 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             foreach (GameObject chesst in chest)
             {
-                chesst.gameObject.transform.localScale -= new Vector3(.5f, .5f, .5f);
+                if (chesst.gameObject.transform.localScale != new Vector3(0.6f, 0.6f, 0.6f))
+                {
+                    chesst.gameObject.transform.localScale -= new Vector3(.2f, .2f, .2f);
+                }
             }
             setText();
             healthSource.Play();
@@ -536,7 +577,10 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             foreach (GameObject chesst in chest)
             {
-                chesst.gameObject.transform.localScale += new Vector3(.5f, .5f, .5f);
+                if (chesst.gameObject.transform.localScale != new Vector3(1.4f, 1.4f, 1.4f))
+                {
+                    chesst.gameObject.transform.localScale += new Vector3(.2f, .2f, .2f);
+                }
             }
             
             setText();
@@ -567,6 +611,7 @@ public class PlayerController : MonoBehaviour
             gameAudio.Stop();  
             gameOverSource.Play();
             _characterController.enabled = false;
+
 
             //  Restart();
 
